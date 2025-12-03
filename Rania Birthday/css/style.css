@@ -1,0 +1,891 @@
+/* ===== GLOBAL RESET / BASE ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== SCREEN LAYOUT ===== */
+.screen {
+  height: 100vh;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  display: none; /* hidden by default */
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+  /* Default soft BG (used as fallback) */
+  background: #fdeff3;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 0, transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(255,255,255,0.9) 0, transparent 55%);
+}
+
+/* ===== THEME VARIANTS (per-screen emotional vibes) ===== */
+
+/* Step 1 – Login: forest / magical gateway, rich blues */
+.theme-forest {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(120, 196, 255, 0.35) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(247, 217, 230, 0.45) 0, transparent 60%),
+    linear-gradient(145deg, #050b1b 0%, #102447 30%, #274b8f 65%, #f7d9e6 100%);
+}
+
+/* Step 2 – Intro: soft floral sunrise */
+.theme-floral {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.85) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(255, 218, 185, 0.55) 0, transparent 60%),
+    linear-gradient(145deg, #fff3f6 0%, #ffe3d0 40%, #ffd6e8 80%);
+}
+
+/* Step 3 – Timeline: warm nostalgic pink/peach */
+.theme-soft {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.9) 0, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(255, 200, 200, 0.5) 0, transparent 60%),
+    linear-gradient(140deg, #ffe1ec 0%, #ffd0b8 45%, #ffebd9 100%);
+}
+
+/* Steps 4 & 5 – Game intro + game: playful, energetic */
+.theme-playful {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.9) 0, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(255, 214, 255, 0.5) 0, transparent 60%),
+    linear-gradient(135deg, #ffe4f0 0%, #ffc6ec 35%, #ffd9b8 70%, #f7f0ff 100%);
+}
+
+/* Step 6 – Moodboard: dreamy pastel / future */
+.theme-dreamy {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(193, 222, 255, 0.6) 0, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(255, 214, 248, 0.55) 0, transparent 55%),
+    linear-gradient(145deg, #f6f0ff 0%, #e4ddff 40%, #ffd6e8 70%, #e1f0ff 100%);
+}
+
+/* Step 7 – Final message: night sky / candlelight */
+.theme-night {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 239, 213, 0.25) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(247, 217, 230, 0.4) 0, transparent 60%),
+    linear-gradient(150deg, #050716 0%, #15192f 45%, #283562 75%, #f7d9e6 100%);
+}
+
+/* ===== ACTIVE SCREEN ANIMATION ===== */
+.screen.active {
+  display: flex;
+  animation: fadeInUp 0.35s ease;
+}
+
+/* ===== CARD / CONTENT ===== */
+.screen-content {
+  max-width: 400px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 20px;
+  padding: 20px 18px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.20);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.35s ease;
+}
+
+h1,
+h2 {
+  text-align: center;
+  font-family: "Georgia", "Times New Roman", serif;
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: 1.85rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+p {
+  line-height: 1.6;
+  margin: 10px 0 14px;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d5d9f5;
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #f07aa8;
+  box-shadow: 0 0 0 2px rgba(240, 122, 168, 0.35);
+}
+
+button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #274b8f, #f07aa8);
+  color: #261e1e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(240, 122, 168, 0.45);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button:hover,
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 14px rgba(240, 122, 168, 0.35);
+}
+
+#login-error {
+  font-size: 0.8rem;
+  color: #c0392b;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== DECOR ELEMENTS ===== */
+.decor {
+  position: absolute;
+  opacity: 0.9;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+/* Generic base sizes if ever used outside screen-specific rules */
+.decor-bunny {
+  bottom: 0;
+  left: 0;
+  width: 90px;
+}
+
+.decor-teddy {
+  top: 0;
+  right: 0;
+  width: 80px;
+}
+
+.decor-rose {
+  bottom: 8px;
+  right: 10px;
+  width: 70px;
+}
+
+/* ===== SCREEN-SPECIFIC DECOR PLACEMENT ===== */
+/* These are positioned relative to .screen-content (which is position: relative) */
+
+#screen-timeline {
+  align-items: flex-start;      /* top-align the content */
+  justify-content: flex-start;  /* optional: also align to top horizontally */
+  padding-top: 24px;
+  padding-bottom: 24px;
+  overflow-y: auto;             /* allow the whole screen to scroll */
+}
+
+#screen-timeline .screen-content {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* Screen 1 – Login */
+#screen-login .decor-bunny {
+  bottom: -10px;   /* slightly tucked but mostly visible */
+  left: -6px;
+  width: 90px;
+}
+
+#screen-login .decor-teddy {
+  top: -8px;
+  right: -4px;
+  width: 78px;
+}
+
+#screen-login .decor-rose {
+  bottom: 6px;
+  right: 10px;
+  width: 64px;
+}
+
+/* Screen 2 – Intro */
+#screen-intro .decor-rose-top {
+  top: -4px;
+  right: -2px;
+  width: 78px;
+}
+
+/* Screen 3 – Timeline */
+#screen-timeline .decor-bunny-small {
+  bottom: -6px;
+  left: -2px;
+  width: 78px;
+}
+
+/* Screen 4 – Game Intro */
+#screen-game-intro .decor-teddy-small {
+  top: -6px;
+  right: -2px;
+  width: 76px;
+}
+
+/* Screen 6 – Moodboard */
+
+#screen-moodboard{
+    align-items: flex-start;      /* top-align the content */
+  justify-content: flex-start;  /* optional: also align to top horizontally */
+  padding-top: 24px;
+  padding-bottom: 24px;
+  overflow-y: auto;  
+}
+#screen-moodboard .decor-rose-corner {
+  top: -4px;
+  left: -2px;
+  width: 80px;
+}
+
+/* Screen 7 – Final Message */
+#screen-final-message {
+    align-items: flex-start;      /* top-align the content */
+  justify-content: flex-start;  /* optional: also align to top horizontally */
+  padding-top: 24px;
+  padding-bottom: 24px;
+  overflow-y: auto;  
+}
+#screen-final-message .decor-bunny-final {
+  bottom: -8px;
+  left: -2px;
+  width: 88px;
+}
+
+#screen-final-message .decor-rose-final {
+  top: -4px;
+  right: -2px;
+  width: 80px;
+}
+
+/* ===== DECOR MOTION ===== */
+.floating-slow {
+  animation: floatUpDown 6s ease-in-out infinite alternate;
+}
+
+.floating-rotate {
+  animation:
+    floatUpDown 7s ease-in-out infinite alternate,
+    slowSpin 20s linear infinite;
+}
+
+@keyframes floatUpDown {
+  from {
+    transform: translateY(4px);
+  }
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ===== CONFETTI ===== */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 999; /* above everything */
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: confettiFall 2.8s linear forwards;
+}
+
+/* Cute pastel colors */
+.confetti-piece.color-1 { background: #ff9aa2; }
+.confetti-piece.color-2 { background: #ffb7b2; }
+.confetti-piece.color-3 { background: #ffdac1; }
+.confetti-piece.color-4 { background: #e2f0cb; }
+.confetti-piece.color-5 { background: #b5ead7; }
+.confetti-piece.color-6 { background: #c7ceff; }
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-20px) rotateZ(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+/* ===== MOBILE TUNING (iPhone-sized viewports) ===== */
+@media (max-width: 430px) {
+  .screen {
+    padding: 14px;
+  }
+
+  .screen-content {
+    max-width: 360px;
+    padding: 18px 16px 16px;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin: 8px 0 12px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    font-size: 0.9rem;
+    padding: 9px 11px;
+  }
+
+  /* Slightly shrink decor so it doesn't feel heavy on small screens */
+  #screen-login .decor-bunny       { width: 80px; }
+  #screen-login .decor-teddy       { width: 70px; }
+  #screen-login .decor-rose        { width: 58px; }
+
+  #screen-intro .decor-rose-top    { width: 70px; }
+  #screen-timeline .decor-bunny-small { width: 70px; }
+  #screen-game-intro .decor-teddy-small { width: 68px; }
+  #screen-moodboard .decor-rose-corner { width: 72px; }
+  #screen-final-message .decor-bunny-final { width: 80px; }
+  #screen-final-message .decor-rose-final  { width: 72px; }
+}
+
+
+/* Optional helper if you want */
+#timeline-container {
+  /* just to be explicit */
+}
+
+
+/* =======================
+   MOODBOARD OF MOMENTS
+   ======================= */
+
+#screen-moodboard .screen-content {
+  max-width: 900px;
+}
+
+/* Grid layout for cards */
+.moodboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .moodboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Individual mood cards */
+.mood-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 182, 193, 0.7); /* soft pink border */
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Image styling */
+.mood-card img {
+  width: 100%;
+  height: 150px;
+  border-radius: 14px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text styling */
+.mood-card h3 {
+  margin: 4px 0 2px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #c45c86; /* romantic pink */
+}
+
+.mood-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #5a4a59;
+}
+
+/* Empty / error states */
+.moodboard-empty,
+.moodboard-error {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #7b5c73;
+}
+
+/* Generic phase wrapper */
+.phase-wrapper {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Platformer + Ship buttons */
+.phase-action-btn {
+  margin-top: 16px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #fbd3e9, #bbdefb);
+  color: #2d2d3a;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.phase-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  opacity: 0.95;
+}
+
+/* Quiz intro + card */
+.quiz-intro {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.quiz-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+/* Progress text */
+.quiz-progress {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8c8ca1;
+  margin-bottom: 8px;
+}
+
+/* Question text */
+.quiz-question {
+  font-size: 1.05rem;
+  margin: 4px 0 12px;
+  color: #252538;
+}
+
+/* Options layout */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Option buttons */
+.quiz-option-btn {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(187, 222, 251, 0.7);
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #fce4ec, #e3f2fd);
+}
+
+/* Correct / Incorrect states */
+.quiz-option-btn.correct {
+  border-color: #81c784;
+  background: #e8f5e9;
+}
+
+.quiz-option-btn.incorrect {
+  border-color: #e57373;
+  background: #ffebee;
+}
+
+.quiz-option-btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+/* Feedback text */
+.quiz-feedback {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #455a64;
+}
+
+/* Error state if quiz fails to load */
+.quiz-error {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #c62828;
+}
+
+
+/* =======================
+   SIMPLE ROSE GAME
+   ======================= */
+
+.game-area {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(180deg, #fff7fb 0%, #ffe4f0 50%, #ffd9b8 100%);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: manipulation; /* nicer on mobile */
+}
+
+.bunny-player {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+}
+
+.rose-score {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 6px 0 2px;
+  text-align: center;
+  color: #c45c86;
+}
+
+/* Falling roses */
+.falling-rose {
+  position: absolute;
+  top: -40px;
+  width: 46px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation-name: roseFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes roseFall {
+  0% {
+    transform: translate(-50%, -10px) rotate(0deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, 110%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+/* +1 pop effect on tap */
+.rose-pop {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c2185b;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation: rosePop 0.6s ease-out forwards;
+}
+
+@keyframes rosePop {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -24px);
+  }
+}
+
+/* Optional: slightly tighter layout on small screens */
+@media (max-width: 430px) {
+  .game-area {
+    max-width: 320px;
+    border-radius: 16px;
+  }
+
+  .bunny-player {
+    width: 74px;
+  }
+
+  .rose-score {
+    font-size: 0.88rem;
+  }
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#bunny {
+  position: absolute;
+  bottom: 5%;
+  width: 60px;
+  height: 60px;
+  background-image: url('assets/images/bunny.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(-50%);
+}
+
+.rose {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-image: url('assets/images/rose.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#bunny {
+  position: absolute;
+  bottom: 8%;
+  width: 70px;
+  height: 70px;
+  background-image: url('assets/images/bunny.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(-50%);
+}
+
+.rose {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background-image: url('assets/images/rose.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Movement buttons */
+#game-controls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  pointer-events: auto;
+}
+
+#game-controls button {
+  width: 80px;
+  height: 80px;
+  background: #ffb6c9;
+  border: none;
+  border-radius: 50%;
+  font-size: 32px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+#game-controls button:active {
+  transform: scale(0.9);
+  background: #ff99b4;
+}
+
+/* =======================
+   SIMPLE ROSE GAME
+   ======================= */
+
+.game-area {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(180deg, #fff7fb 0%, #ffe4f0 50%, #ffd9b8 100%);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: manipulation; /* nicer on mobile */
+}
+
+.bunny-player {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+}
+
+.rose-score {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 6px 0 2px;
+  text-align: center;
+  color: #c45c86;
+}
+
+/* Falling roses */
+.falling-rose {
+  position: absolute;
+  top: -40px;
+  width: 46px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation-name: roseFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes roseFall {
+  0% {
+    transform: translate(-50%, -10px) rotate(0deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, 110%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+/* +1 pop effect on tap */
+.rose-pop {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c2185b;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  animation: rosePop 0.6s ease-out forwards;
+}
+
+@keyframes rosePop {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -24px);
+  }
+}
+
+/* Optional: slightly tighter layout on small screens */
+@media (max-width: 430px) {
+  .game-area {
+    max-width: 320px;
+    border-radius: 16px;
+  }
+
+  .bunny-player {
+    width: 74px;
+  }
+
+  .rose-score {
+    font-size: 0.88rem;
+  }
+}

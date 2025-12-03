@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is her absolute favorite color that she always mentions?",
+      "options": ["Sky Blue", "Royal Blue", "Turquoise", "Deep Navy"],
+      "correctIndex": 1
+    },
+    {
+      "id": 2,
+      "question": "Which movie universe is she secretly obsessed with?",
+      "options": ["Shrek", "Frozen", "Moana", "Inside Out"],
+      "correctIndex": 0
+    },
+    {
+      "id": 3,
+      "question": "Which city does she always talk about visiting or living in someday?",
+      "options": ["Paris", "London", "New York", "Amsterdam"],
+      "correctIndex": 1
+    },
+    {
+      "id": 4,
+      "question": "Which comfort food makes her happiest on a bad day?",
+      "options": ["Pizza", "Fried Chicken", "Pasta", "Burgers"],
+      "correctIndex": 1
+    },
+    {
+      "id": 5,
+      "question": "Which of these movies gives her cozy, magical vibes?",
+      "options": ["Coraline", "The Conjuring", "Dune", "Interstellar"],
+      "correctIndex": 0
+    },
+    {
+      "id": 6,
+      "question": "Which nickname does he lovingly use for her?",
+      "options": ["My Sunshine", "My Rabbit", "My Star", "My Moon Child"],
+      "correctIndex": 1
+    },
+    {
+      "id": 7,
+      "question": "In their little fantasy world, he is known as the…",
+      "options": ["Red Dragon Boy", "Blue Fairy Boy", "Golden Knight", "Emerald Wizard"],
+      "correctIndex": 1
+    },
+    {
+      "id": 8,
+      "question": "Which magical world-inspired series do they both reference often?",
+      "options": ["Harry Potter", "Lord of the Rings", "Narnia", "Percy Jackson"],
+      "correctIndex": 0
+    }
+  ]
+}

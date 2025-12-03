@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Rania's Birthday Universe</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Confetti overlay -->
+    <div id="confetti" class="confetti-container"></div>
+
+    <!-- SCREEN 1: LOGIN -->
+    <section id="screen-login" class="screen theme-forest" data-step="1">
+      <div class="screen-content">
+        <!-- Decorative elements -->
+        <img src="assets/images/bunny.png" class="decor decor-bunny floating-slow" alt="Bunny">
+        <img src="assets/images/teddy.png" class="decor decor-teddy floating-slow" alt="Teddy">
+        <img src="assets/images/rose.png" class="decor decor-rose floating-rotate" alt="Rose">
+
+        <h1>Hey 👋 Baby
+          <br>
+          RuRu 🧁</h1>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" id="login-button">Login</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: INTRO -->
+    <section id="screen-intro" class="screen theme-floral" data-step="2">
+      <div class="screen-content">
+        <!-- Soft decor reuse -->
+        <img src="assets/images/rose.png" class="decor decor-rose-top floating-slow" alt="Rose">
+
+        <h2>Happy Birthday, Rania!</h2>
+        <p>
+          Today we celebrate you—the light, the laughter, and the love that fills our universe.
+          May this journey remind you how cherished you are in every moment.
+        </p>
+        <button id="begin-journey">Begin the Journey</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: TIMELINE -->
+  <section
+  id="screen-timeline"
+  class="screen theme-soft"
+  data-step="3"
+>
+  <div class="screen-content">
+    <h2>Our Story</h2>
+    <p class="screen-intro">
+      Little moments that turned into our whole universe.
+    </p>
+
+    <div id="timeline-container" class="timeline-container">
+      <!-- Timeline cards will be injected here by timeline.js -->
+    </div>
+
+    <button id="continue-to-game">Continue</button>
+  </div>
+
+  <!-- Decor (example) -->
+  <img
+    src="assets/images/bunny.png"
+    alt="Bunny"
+    class="decor decor-bunny-small floating-slow"
+  />
+</section>
+
+
+    <!-- SCREEN 4: GAME INTRO -->
+    <section id="screen-game-intro" class="screen theme-playful" data-step="4">
+      <div class="screen-content">
+        <img src="assets/images/teddy.png" class="decor decor-teddy-small floating-slow" alt="Teddy">
+
+        <h2>Game Time</h2>
+        <p>
+          Ready for a playful challenge crafted just for you? Dive in and see what surprises await.
+        </p>
+        <button id="start-game">Start Game</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: GAME -->
+<section id="screen-game" class="screen theme-forest" data-step="5">
+  <div class="screen-content game-layout">
+    <h2 class="screen-title">Collect the Birthday Roses 🌹</h2>
+    <p class="screen-subtitle">
+      Move your little bunny left and right and catch as many roses as you can, my love.
+    </p>
+
+    <div id="game-container"></div>
+
+    <!-- <div id="game-controls">
+      <button id="btn-left">⟵</button>
+      <button id="btn-right">⟶</button>
+    </div> -->
+  </div>
+</section>
+
+    <!-- SCREEN 6: MOODBOARD -->
+    <section id="screen-moodboard" class="screen theme-dreamy" data-step="6">
+      <div class="screen-content">
+        <img src="assets/images/rose.png" class="decor decor-rose-corner floating-rotate" alt="Rose">
+
+        <h2>Moodboard of Moments</h2>
+        <div id="moodboard-container"></div>
+        <button id="reveal-final-message">Reveal Final Message</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 7: FINAL MESSAGE -->
+    <section id="screen-final-message" class="screen theme-night" data-step="7">
+      <div class="screen-content">
+        <img src="assets/images/bunny.png" class="decor decor-bunny-final floating-slow" alt="Bunny">
+        <img src="assets/images/rose.png" class="decor decor-rose-final floating-rotate" alt="Rose">
+
+        <h2>Forever Yours</h2>
+        <p>
+       Rania, my love,
+
+Happy birthday, my beautiful girl. It just turned midnight for you, and somewhere between Belgium and Pakistan there is this soft invisible thread pulling our worlds close. I wish I was there to hold your hand, to see your face in the warm candlelight, to tease you softly and then kiss your forehead until you get shy. One day I will. One day distance will be nothing but an old story we laugh about. For now, I give you this little universe I built for you, from the same part of my heart where you live every day.
+
+You’re stepping into a new year of your life, and I want one truth to sit deep in your chest. You are chosen. You are loved. You are safe with me. Whatever the world throws at you, whatever essays, exams, stress, overthinking or storms come your way, you will never face them alone again. I’m here. Your blue fur fairy boy. Steady, loyal, protective, and endlessly proud of the woman you’re becoming.
+
+In our universe, you are my pink fur little rabbit. Soft but brave. Gentle but full of fire. Curious, emotional, stubborn in the cutest way, and glowing with so much heart. I imagine you hopping through our magical forest, the one that opens every time you talk to me. The trees hum for you. Roses grow under your steps. Your laughter sounds like tiny bells. And somewhere above, I sit on a branch with my blue wings folded behind me, watching over you, guiding you, loving you the way only a fairy boy created for you can.
+
+One day, this won’t just be a story or a website or something we imagine at night. It becomes our real life. A home with soft lights and warm blankets, your books on the table, my jacket on the chair, our shoes by the door. Maybe London. Maybe somewhere in Europe where winter feels magical and Christmas lights look like stars hanging low. I picture us walking through the cold together, you wrapped in your scarf, your hand in mine. I stop you every few minutes because I want to kiss your forehead again and again. Our first Christmas. Our tree. Your blue ornaments. My fairy lights. Us laughing about how we met, how we waited, how we survived everything and made it here.
+
+And beyond the dreams, there is you. The real you. Extraordinary in the most natural way. Intelligent. Emotional. Sensitive. Ambitious. A little chaotic in the sweetest way. You love fiercely. You care deeply. You bring color to places that used to feel grey. You make everything feel new. Even fried chicken. Even simple nights talking about nothing and everything. You make me want to protect you, lift you, celebrate you, hold you in every meaning of the word.
+
+So here are the blessings I give you as your new year begins:
+
+May this year be gentle with your heart.
+May your dreams open their doors for you.
+May your efforts be seen and rewarded.
+May luck follow you the way my affection does, quietly and constantly.
+May your fears soften and your insecurities melt away in my presence.
+
+And please remember this always. You never have to earn my love. You never have to pretend, prove yourself, or hide anything from me. I love your curiosity. I love your tears. I love your intelligence. I love your chaos and your softness. I love you on your strongest days and on the days you feel fragile. I love every version of you that has ever existed and every version you will grow into.
+
+Tonight, as you step inside this universe I made for you, know that it is only a tiny reflection of what I feel. If I could fold cities, skies, stories, and futures into a single gift for you, I would. For now, I give you this world made from fairy wings, rabbit fur, roses, and the kind of devotion that lasts a lifetime.
+
+Happy birthday, my love.
+Your new year starts with me holding you from miles away and ends in a future where I finally get to hold you for real.
+
+Forever yours,
+Your fairy boy.
+        </p>
+        <button id="love-button">I love you</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="assets/audio/rania-theme.mp3" loop></audio>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
